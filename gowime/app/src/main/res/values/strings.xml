@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">gowime</string>
+    <string name="home_text">Make new friends with one-on-one activities and events</string>
+    <string name="login_with_facebook_button">Login with Facebook</string>
+    <string name="login_with_email_button">Login with Email</string>
+    <string name="signup_with_email_button">Signup with Email</string>
+
+    <string name="loading">Loading…</string>
+
+</resources>

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "9187029509",
+    "firebase_url": "https://gowime-927e0.firebaseio.com",
+    "project_id": "gowime-927e0",
+    "storage_bucket": "gowime-927e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:9187029509:android:530ec23e3fa52fe9",
+        "android_client_info": {
+          "package_name": "com.gowime.www.gowime"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "9187029509-0r23p7dddvqmkvluts9tlanj92hc5i21.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gowime.www.gowime",
+            "certificate_hash": "e2aa7438743d76da4462de09df52abf6fb240ad9"
+          }
+        },
+        {
+          "client_id": "9187029509-rd5emkrdoclrc5tguni77qn4ipmabgsr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMssMp6Sil-8GLNTWr84SlWvL-adQYt0g"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "9187029509-rd5emkrdoclrc5tguni77qn4ipmabgsr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
