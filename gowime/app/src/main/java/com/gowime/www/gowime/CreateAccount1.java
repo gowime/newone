@@ -34,6 +34,7 @@ public class CreateAccount1 extends utilities {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference myRef;
+    private String userId;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,6 +46,8 @@ public class CreateAccount1 extends utilities {
         mAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         myRef = mFirebaseDatabase.getReference();
+        FirebaseUser user = mAuth.getCurrentUser();
+        userId = user.getUid();
 
         fName = findViewById(R.id.first_name_edit);
         lName = findViewById(R.id.last_name_edit);
@@ -67,13 +70,14 @@ public class CreateAccount1 extends utilities {
 
         // Read from the database
         myRef.addValueEventListener(new ValueEventListener() {
+            FirebaseUser user = mAuth.getCurrentUser();
+            String userID = user.getUid();
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                Object value = dataSnapshot.getValue();
-                Log.d(TAG, "Value is: " + value);
                 //TODO: takes these values and populated the UI
+                showData(dataSnapshot);
             }
 
             @Override
@@ -100,10 +104,12 @@ public class CreateAccount1 extends utilities {
                 if(!firstName.equals("") && !lastName.equals("")){
                     FirebaseUser user = mAuth.getCurrentUser();
                     String userID = user.getUid();
-                    myRef.child(userID).child("profile").child("firstName").setValue(firstName);
-                    myRef.child(userID).child("profile").child("lastName").setValue(lastName);
-                    myRef.child(userID).child("profile").child("aboutMe").setValue(aboutMe);
-                    myRef.child(userID).child("profile").child("myWork").setValue(myWork);
+                    myRef.child("users").child(userID).child("profile").child("firstName").setValue(firstName);
+                    myRef.child("users").child(userID).child("profile").child("lastName").setValue(lastName);
+                    myRef.child("users").child(userID).child("profile").child("aboutMe").setValue(aboutMe);
+                    myRef.child("users").child(userID).child("profile").child("myWork").setValue(myWork);
+                    myRef.child("users").child(userID).child("profile").child("email").setValue(user.getEmail());
+
                     showToast(context, "Profile updated");
                     //go to the next screen
                     Intent intent = new Intent(CreateAccount1.this, CreateAccount2.class);
@@ -115,5 +121,24 @@ public class CreateAccount1 extends utilities {
             }
         });
 
+    }
+
+    private void showData(DataSnapshot dataSnapshot) {
+        UserInformation uInfo = new UserInformation();
+        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+            //sets the uInfo object values from the values in the database
+            uInfo.setFirstName(ds.child(userId).child("profile").getValue(UserInformation.class).getFirstName());
+            uInfo.setLastName(ds.child(userId).child("profile").getValue(UserInformation.class).getLastName());
+            uInfo.setAboutMe(ds.child(userId).child("profile").getValue(UserInformation.class).getAboutMe());
+            uInfo.setMyWork(ds.child(userId).child("profile").getValue(UserInformation.class).getMyWork());
+            uInfo.setEmail(ds.child(userId).child("profile").getValue(UserInformation.class).getEmail());
+            uInfo.setNotificationChoice(ds.child(userId).child("profile").getValue(UserInformation.class).getNotificationChoice());
+
+            //Find the views
+            fName.setText(uInfo.getFirstName());
+            lName.setText(uInfo.getLastName());
+            about.setText(uInfo.getAboutMe());
+            work.setText(uInfo.getMyWork());
+        }
     }
 }

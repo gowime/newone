@@ -110,8 +110,8 @@ public class Login extends utilities {
                                 }else{
                                     //all is good so log the user in
                                     //TODO: take user to Recommendations flow
-                                    //for now go to the user details flow
-                                    Intent intent = new Intent(Login.this, CreateAccount1.class);
+                                    //for now go to the user profile flow
+                                    Intent intent = new Intent(Login.this, UserProfile.class);
                                     startActivity(intent);
                                 }
                             }

@@ -78,25 +78,28 @@
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        android:text="Maximum Distance"
+        android:text="Search Radius"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/location_edit" />
 
     <SeekBar
-        android:id="@+id/max_distance_edit"
+        android:id="@+id/seekbar"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="14dp"
         android:layout_marginEnd="24dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="24dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
+        android:min="1"
+        android:max="10"
+        android:progress="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/distance_label" />
 
     <TextView
-        android:id="@+id/maximum_distance_value"
+        android:id="@+id/seekbar_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
@@ -114,7 +117,7 @@
         android:layout_marginStart="2dp"
         android:layout_marginTop="24dp"
         android:text="miles"
-        app:layout_constraintStart_toEndOf="@+id/maximum_distance_value"
+        app:layout_constraintStart_toEndOf="@+id/seekbar_value"
         app:layout_constraintTop_toBottomOf="@+id/location_edit" />
 
     <android.support.design.widget.FloatingActionButton
@@ -126,7 +129,7 @@
         android:layout_marginTop="32dp"
         android:clickable="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/max_distance_edit"
+        app:layout_constraintTop_toBottomOf="@+id/seekbar"
         app:srcCompat="@drawable/round_keyboard_arrow_right_white_18" />
 
 </android.support.constraint.ConstraintLayout>

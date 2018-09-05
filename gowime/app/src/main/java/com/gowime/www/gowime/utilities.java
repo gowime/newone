@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class utilities extends AppCompatActivity {
 
     @VisibleForTesting
@@ -46,4 +49,5 @@ public class utilities extends AppCompatActivity {
         Toast toast = Toast.makeText(context, message, Toast.LENGTH_LONG);
         toast.show();
     }
+
 }
